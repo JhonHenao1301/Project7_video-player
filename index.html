@@ -11,7 +11,7 @@
 <body>
     <div class="wrapper">
         <div class="player">
-            <video id="video" poster="./images/poster.jpg" muted src="https://media.w3.org/2010/05/sintel/trailer.mp4" width="600"></video>
+            <video id="video" poster="./images/poster.jpg" src="https://media.w3.org/2010/05/sintel/trailer.mp4" width="600"></video>
             <div class="player-overlay">
                 <h2 class="player-title">Música para mis oidos</h2>
                 <div class="player-actions">
@@ -23,7 +23,7 @@
             </div>
            
             <div class="player-progress">
-                <input id="progress" type="range" min="0"value="0" step="1">
+                <input id="progress" type="range" min="0" value="0" step="1">
             </div>
         </div>
     </div>
@@ -45,6 +45,7 @@
             $video.pause();
             $play.hidden = false;
             $pause.hidden = true;
+            console.log($progress.max);
         })
 
         $backward.addEventListener('click', () => {
@@ -57,7 +58,7 @@
 
         const $progress = document.querySelector('#progress');
 
-        $video.addEventListener('loadmetadata', () => {
+        $video.addEventListener('loadedmetadata', () => {
             $progress.max = $video.duration;
         })
 
